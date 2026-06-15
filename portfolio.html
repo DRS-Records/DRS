@@ -1,0 +1,1196 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="author" content="Daniel Rumpold Sanchez">
+<meta name="description" content="DRS Universe – Gesamtportfolio 2026. Musik, Film, Literatur, E-Learning. Daniel Rumpold Sanchez, Innsbruck.">
+<title>DRS Universe — Gesamtportfolio 2026</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Syne:wght@400;500;700;800&family=DM+Mono:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+/* ═══════════════════════════════════════════
+   RESET & TOKENS
+═══════════════════════════════════════════ */
+*{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --ink:#0b0b0b;
+  --paper:#f4f2ed;
+  --paper2:#eae7e0;
+  --red:#c8001a;
+  --red-dim:rgba(200,0,26,.12);
+  --green:#1a7a00;
+  --green-neon:#39ff14;
+  --gold:#b8892a;
+  --muted:#7a7469;
+  --border:#d4cfc6;
+  --white:#ffffff;
+  --accent-bar:3px;
+}
+
+html{scroll-behavior:smooth;background:var(--ink)}
+body{
+  font-family:'Syne',sans-serif;
+  color:var(--ink);
+  background:var(--paper);
+  overflow-x:hidden;
+}
+
+/* ═══════════════════════════════════════════
+   LANGUAGE TOGGLE
+═══════════════════════════════════════════ */
+.lang-de .en{display:none}
+.lang-en .de{display:none}
+
+/* ═══════════════════════════════════════════
+   NAV
+═══════════════════════════════════════════ */
+nav{
+  position:fixed;top:0;left:0;right:0;z-index:200;
+  display:flex;align-items:center;justify-content:space-between;
+  padding:0 2.5rem;height:52px;
+  background:rgba(11,11,11,.96);
+  backdrop-filter:blur(16px);
+  border-bottom:1px solid rgba(255,255,255,.06);
+}
+.nav-brand{
+  font-family:'Syne',sans-serif;
+  font-size:.75rem;font-weight:800;letter-spacing:.35em;
+  text-transform:uppercase;color:var(--green-neon);
+  text-decoration:none;
+}
+.nav-links{display:flex;gap:.1rem;align-items:center}
+.nav-links a{
+  font-family:'DM Mono',monospace;font-size:.6rem;
+  letter-spacing:.2em;text-transform:uppercase;
+  color:rgba(255,255,255,.35);text-decoration:none;
+  padding:.35rem .7rem;border-radius:2px;
+  transition:color .15s,background .15s;
+}
+.nav-links a:hover{color:#fff;background:rgba(255,255,255,.06)}
+.lang-btn{
+  font-family:'DM Mono',monospace;font-size:.6rem;
+  letter-spacing:.2em;text-transform:uppercase;
+  background:none;border:1px solid rgba(255,255,255,.18);
+  color:rgba(255,255,255,.5);cursor:pointer;
+  padding:.3rem .7rem;border-radius:2px;margin-left:.8rem;
+  transition:all .15s;
+}
+.lang-btn:hover{border-color:var(--green-neon);color:var(--green-neon)}
+
+/* ═══════════════════════════════════════════
+   COVER / HERO
+═══════════════════════════════════════════ */
+#cover{
+  min-height:100vh;
+  background:var(--ink);
+  display:grid;
+  grid-template-rows:1fr auto;
+  padding-top:52px;
+  position:relative;
+  overflow:hidden;
+}
+.cover-grid-lines{
+  position:absolute;inset:0;
+  background-image:
+    linear-gradient(rgba(57,255,20,.025) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(57,255,20,.025) 1px,transparent 1px);
+  background-size:60px 60px;
+  pointer-events:none;
+}
+.cover-glow{
+  position:absolute;
+  width:700px;height:500px;
+  background:radial-gradient(ellipse,rgba(200,0,26,.12) 0%,transparent 65%);
+  top:10%;left:50%;transform:translateX(-50%);
+  pointer-events:none;
+}
+.cover-content{
+  display:flex;flex-direction:column;
+  justify-content:center;
+  padding:5rem 3rem 3rem;
+  position:relative;z-index:2;
+  max-width:1100px;margin:0 auto;width:100%;
+}
+.cover-eyebrow{
+  font-family:'DM Mono',monospace;
+  font-size:.65rem;letter-spacing:.45em;text-transform:uppercase;
+  color:rgba(57,255,20,.7);margin-bottom:1.5rem;
+}
+.cover-name{
+  font-family:'DM Serif Display',serif;
+  font-size:clamp(3.5rem,9vw,7.5rem);
+  line-height:.92;color:#fff;
+  margin-bottom:.5rem;
+}
+.cover-name em{color:var(--green-neon);font-style:normal}
+.cover-label{
+  font-family:'Syne',sans-serif;
+  font-size:clamp(1rem,2.5vw,1.5rem);
+  font-weight:800;letter-spacing:.15em;text-transform:uppercase;
+  color:var(--red);margin-bottom:2rem;
+}
+.cover-desc{
+  font-size:1rem;line-height:1.85;
+  color:rgba(255,255,255,.5);
+  max-width:580px;margin-bottom:2.5rem;
+}
+.cover-desc strong{color:rgba(255,255,255,.85);font-weight:500}
+.cover-stats{
+  display:flex;gap:2.5rem;flex-wrap:wrap;margin-bottom:3rem;
+}
+.cstat{border-left:2px solid var(--red);padding-left:1rem}
+.cstat-num{
+  font-family:'DM Serif Display',serif;
+  font-size:2.2rem;color:var(--green-neon);line-height:1;
+}
+.cstat-label{
+  font-family:'DM Mono',monospace;
+  font-size:.58rem;letter-spacing:.2em;text-transform:uppercase;
+  color:rgba(255,255,255,.3);margin-top:.2rem;
+}
+.cover-cta{display:flex;gap:1rem;flex-wrap:wrap}
+.btn{
+  font-family:'DM Mono',monospace;
+  font-size:.62rem;letter-spacing:.2em;text-transform:uppercase;
+  padding:.75rem 1.4rem;text-decoration:none;
+  border-radius:1px;display:inline-block;
+  transition:all .2s;
+}
+.btn-primary{background:var(--red);color:#fff;border:1px solid var(--red)}
+.btn-primary:hover{background:#e0001d}
+.btn-outline{background:transparent;color:rgba(255,255,255,.6);border:1px solid rgba(255,255,255,.2)}
+.btn-outline:hover{border-color:var(--green-neon);color:var(--green-neon)}
+.cover-scroll{
+  padding:1.5rem 3rem;
+  display:flex;align-items:center;gap:.8rem;
+  position:relative;z-index:2;max-width:1100px;margin:0 auto;width:100%;
+}
+.cover-scroll span{
+  font-family:'DM Mono',monospace;font-size:.55rem;
+  letter-spacing:.3em;text-transform:uppercase;color:rgba(255,255,255,.2);
+}
+.scroll-line{flex:1;height:1px;background:linear-gradient(to right,rgba(255,255,255,.1),transparent)}
+
+/* ═══════════════════════════════════════════
+   SECTIONS GENERAL
+═══════════════════════════════════════════ */
+.section{padding:5rem 3rem;max-width:1100px;margin:0 auto}
+.section-full{padding:5rem 0;background:var(--paper2);
+  border-top:1px solid var(--border);border-bottom:1px solid var(--border)}
+.section-full .section{padding-top:0;padding-bottom:0}
+
+.sec-eyebrow{
+  font-family:'DM Mono',monospace;
+  font-size:.58rem;letter-spacing:.45em;text-transform:uppercase;
+  color:var(--red);margin-bottom:.6rem;
+}
+.sec-title{
+  font-family:'DM Serif Display',serif;
+  font-size:clamp(2.2rem,5vw,3.8rem);
+  line-height:1;color:var(--ink);margin-bottom:1.5rem;
+}
+.sec-title em{color:var(--red);font-style:italic}
+.sec-title-white{color:#fff}
+.divider{
+  width:48px;height:3px;
+  background:linear-gradient(to right,var(--green),transparent);
+  margin-bottom:2.5rem;
+}
+
+/* ═══════════════════════════════════════════
+   ABOUT / PROFIL
+═══════════════════════════════════════════ */
+#about{background:var(--ink);color:#fff}
+#about .sec-title{color:#fff}
+#about .sec-eyebrow{color:rgba(57,255,20,.7)}
+.about-grid{display:grid;grid-template-columns:3fr 2fr;gap:4rem;align-items:start}
+.about-lead{
+  font-family:'DM Serif Display',serif;
+  font-size:clamp(1.1rem,2.5vw,1.5rem);
+  line-height:1.6;color:rgba(255,255,255,.8);
+  margin-bottom:1.5rem;font-style:italic;
+}
+.about-body{font-size:.95rem;line-height:1.95;color:rgba(255,255,255,.5);margin-bottom:1rem}
+.about-body strong{color:rgba(255,255,255,.85);font-weight:500}
+.about-facts{display:flex;flex-direction:column;gap:.8rem;margin-top:1rem}
+.fact-row{
+  display:flex;align-items:flex-start;gap:1rem;
+  padding:1rem 1.2rem;
+  background:rgba(255,255,255,.04);
+  border:1px solid rgba(255,255,255,.06);
+  border-left:3px solid var(--red);
+}
+.fact-key{
+  font-family:'DM Mono',monospace;font-size:.58rem;
+  letter-spacing:.2em;text-transform:uppercase;
+  color:var(--green-neon);min-width:90px;padding-top:.1rem;
+}
+.fact-val{font-size:.85rem;color:rgba(255,255,255,.6);line-height:1.6}
+
+/* ═══════════════════════════════════════════
+   KOMPETENZEN
+═══════════════════════════════════════════ */
+.skills-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:1px;
+  border:1px solid var(--border);margin-top:.5rem}
+.skill-block{
+  padding:1.5rem 1.8rem;
+  background:var(--white);
+  border-right:1px solid var(--border);
+  transition:background .2s;
+}
+.skill-block:hover{background:var(--paper2)}
+.skill-ico{font-size:1.5rem;margin-bottom:.7rem}
+.skill-name{
+  font-family:'Syne',sans-serif;font-size:.8rem;font-weight:800;
+  letter-spacing:.1em;text-transform:uppercase;color:var(--ink);
+  margin-bottom:.5rem;
+}
+.skill-tools{font-size:.78rem;color:var(--muted);line-height:1.8}
+.tool-tag{
+  display:inline-block;
+  font-family:'DM Mono',monospace;font-size:.58rem;
+  background:var(--paper2);color:var(--ink);
+  padding:.1rem .45rem;margin:.1rem .1rem 0 0;border-radius:1px;
+}
+
+/* ═══════════════════════════════════════════
+   PROJEKTE
+═══════════════════════════════════════════ */
+.projects-header{
+  display:flex;align-items:flex-end;justify-content:space-between;
+  margin-bottom:2rem;flex-wrap:wrap;gap:1rem;
+}
+.project-grid{display:grid;grid-template-columns:1fr 1fr;gap:1.5rem}
+.project-card{
+  background:var(--white);border:1px solid var(--border);
+  padding:0;overflow:hidden;
+  transition:transform .2s,box-shadow .2s;
+  display:flex;flex-direction:column;
+}
+.project-card:hover{transform:translateY(-4px);box-shadow:0 12px 40px rgba(0,0,0,.1)}
+.project-banner{
+  height:8px;
+  background:linear-gradient(90deg,var(--red),var(--gold));
+}
+.project-banner.green{background:linear-gradient(90deg,var(--green),#1a7a0080)}
+.project-banner.blue{background:linear-gradient(90deg,#004d99,#0077cc80)}
+.project-banner.purple{background:linear-gradient(90deg,#5c0099,#9933cc80)}
+.project-body{padding:1.8rem 2rem;flex:1;display:flex;flex-direction:column}
+.project-type{
+  font-family:'DM Mono',monospace;font-size:.58rem;
+  letter-spacing:.3em;text-transform:uppercase;
+  color:var(--muted);margin-bottom:.5rem;
+}
+.project-name{
+  font-family:'DM Serif Display',serif;
+  font-size:1.6rem;color:var(--ink);line-height:1.1;
+  margin-bottom:.8rem;
+}
+.project-desc{font-size:.85rem;line-height:1.8;color:var(--muted);flex:1;margin-bottom:1.2rem}
+.project-meta{
+  display:flex;gap:1rem;flex-wrap:wrap;
+  padding-top:1rem;
+  border-top:1px solid var(--border);
+}
+.pmeta-item{
+  font-family:'DM Mono',monospace;font-size:.58rem;
+  letter-spacing:.15em;text-transform:uppercase;color:var(--muted);
+}
+.pmeta-item strong{color:var(--ink);display:block;font-size:.75rem;
+  font-family:'Syne',sans-serif;font-weight:700;letter-spacing:0}
+.project-card-wide{grid-column:1/-1}
+
+/* ═══════════════════════════════════════════
+   MUSIK / LABEL
+═══════════════════════════════════════════ */
+#music{background:var(--ink)}
+#music .sec-eyebrow{color:rgba(57,255,20,.7)}
+#music .sec-title{color:#fff}
+.artists-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fill,minmax(160px,1fr));
+  gap:1px;
+  border:1px solid rgba(255,255,255,.07);
+  margin-top:1rem;
+}
+.artist-block{
+  padding:1.2rem 1.5rem;
+  background:rgba(255,255,255,.03);
+  border-right:1px solid rgba(255,255,255,.06);
+  transition:background .2s;
+  cursor:default;
+}
+.artist-block:hover{background:rgba(57,255,20,.05)}
+.artist-block-name{
+  font-family:'Syne',sans-serif;
+  font-size:.88rem;font-weight:700;
+  color:#fff;margin-bottom:.25rem;
+}
+.artist-block-genre{
+  font-family:'DM Mono',monospace;
+  font-size:.58rem;letter-spacing:.15em;
+  color:rgba(255,255,255,.3);text-transform:uppercase;
+}
+.releases-table{width:100%;margin-top:2rem;border-collapse:collapse}
+.releases-table th{
+  font-family:'DM Mono',monospace;font-size:.58rem;letter-spacing:.25em;
+  text-transform:uppercase;color:rgba(255,255,255,.25);
+  padding:.7rem 1rem;text-align:left;
+  border-bottom:1px solid rgba(255,255,255,.08);
+}
+.releases-table td{
+  padding:.8rem 1rem;font-size:.85rem;color:rgba(255,255,255,.55);
+  border-bottom:1px solid rgba(255,255,255,.05);
+}
+.releases-table td:first-child{color:rgba(255,255,255,.9);font-weight:500}
+.releases-table tr:hover td{background:rgba(255,255,255,.02)}
+
+/* ═══════════════════════════════════════════
+   FÖRDERUNGSÜBERSICHT
+═══════════════════════════════════════════ */
+.funding-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:1.2rem}
+.funding-card{
+  border:1px solid var(--border);padding:1.8rem;
+  background:var(--white);position:relative;overflow:hidden;
+}
+.funding-card::before{
+  content:'';position:absolute;top:0;left:0;right:0;height:var(--accent-bar);
+  background:var(--accent-color,var(--red));
+}
+.funding-body{font-size:.85rem;color:var(--muted);line-height:1.8;margin:.6rem 0 1rem}
+.funding-label{
+  font-family:'DM Mono',monospace;font-size:.58rem;letter-spacing:.2em;
+  text-transform:uppercase;color:var(--muted);margin-bottom:.3rem;
+}
+.funding-name{
+  font-family:'Syne',sans-serif;font-size:1.1rem;font-weight:800;color:var(--ink)
+}
+.funding-amount{
+  font-family:'DM Serif Display',serif;font-size:1.8rem;color:var(--red);
+  margin-bottom:.3rem;
+}
+.funding-period{font-family:'DM Mono',monospace;font-size:.65rem;color:var(--muted)}
+
+/* ═══════════════════════════════════════════
+   LEBENSLAUF / TIMELINE
+═══════════════════════════════════════════ */
+.timeline{display:flex;flex-direction:column;gap:0}
+.tl-year-group{margin-bottom:2rem}
+.tl-year{
+  font-family:'DM Mono',monospace;font-size:.62rem;letter-spacing:.3em;
+  text-transform:uppercase;color:var(--muted);
+  padding:.4rem 0 .4rem 1.5rem;
+  border-left:2px solid var(--border);margin-bottom:.8rem;
+}
+.tl-entry{
+  display:grid;grid-template-columns:auto 1fr;gap:0 1.5rem;
+  padding-left:1.5rem;
+  border-left:2px solid var(--border);
+  margin-bottom:.8rem;position:relative;
+}
+.tl-entry::before{
+  content:'';position:absolute;left:-5px;top:.4rem;
+  width:8px;height:8px;border-radius:50%;
+  background:var(--red);
+}
+.tl-dates{
+  font-family:'DM Mono',monospace;font-size:.6rem;
+  color:var(--muted);white-space:nowrap;padding-top:.1rem;
+}
+.tl-title{font-weight:700;font-size:.9rem;color:var(--ink)}
+.tl-org{font-size:.82rem;color:var(--muted);margin-top:.1rem}
+.tl-desc{font-size:.78rem;color:var(--muted);margin-top:.2rem;line-height:1.6}
+
+.certs-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:1rem;margin-top:1.5rem}
+.cert-card{
+  padding:1.2rem 1.5rem;border:1px solid var(--border);
+  background:var(--white);
+}
+.cert-name{font-weight:700;font-size:.88rem;color:var(--ink);margin-bottom:.2rem}
+.cert-org{font-family:'DM Mono',monospace;font-size:.6rem;letter-spacing:.15em;color:var(--muted)}
+.cert-date{font-size:.75rem;color:var(--muted);margin-top:.3rem}
+
+/* ═══════════════════════════════════════════
+   KONTAKT
+═══════════════════════════════════════════ */
+#contact{background:var(--ink);color:#fff}
+#contact .sec-eyebrow{color:rgba(57,255,20,.7)}
+#contact .sec-title{color:#fff}
+.contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:1px;
+  border:1px solid rgba(255,255,255,.08);margin-top:1.5rem}
+.contact-item{
+  padding:1.5rem 2rem;
+  background:rgba(255,255,255,.03);
+  display:flex;align-items:center;gap:1rem;
+  text-decoration:none;color:inherit;
+  transition:background .2s;
+  border-right:1px solid rgba(255,255,255,.06);
+}
+.contact-item:hover{background:rgba(57,255,20,.06)}
+.contact-ico{font-size:1.2rem;min-width:1.5rem}
+.contact-key{font-family:'DM Mono',monospace;font-size:.58rem;letter-spacing:.2em;
+  text-transform:uppercase;color:rgba(255,255,255,.25);margin-bottom:.2rem}
+.contact-val{font-size:.88rem;color:rgba(255,255,255,.7)}
+.contact-val a{color:var(--green-neon);text-decoration:none}
+
+/* ═══════════════════════════════════════════
+   VISION QUOTE
+═══════════════════════════════════════════ */
+.vision-block{
+  margin:4rem 0 0;padding:3rem;
+  border:1px solid rgba(255,255,255,.08);
+  border-left:4px solid var(--red);
+  background:rgba(255,255,255,.02);
+}
+.vision-quote{
+  font-family:'DM Serif Display',serif;
+  font-size:clamp(1.1rem,2.5vw,1.7rem);
+  font-style:italic;line-height:1.6;
+  color:rgba(255,255,255,.75);
+  margin-bottom:1rem;
+}
+.vision-attr{
+  font-family:'DM Mono',monospace;font-size:.6rem;
+  letter-spacing:.3em;text-transform:uppercase;
+  color:rgba(57,255,20,.5);
+}
+
+/* ═══════════════════════════════════════════
+   FOOTER
+═══════════════════════════════════════════ */
+footer{
+  background:var(--ink);
+  border-top:1px solid rgba(255,255,255,.06);
+  padding:2rem 3rem;
+  display:flex;align-items:center;justify-content:space-between;
+  flex-wrap:wrap;gap:1rem;
+}
+.footer-brand{
+  font-family:'Syne',sans-serif;font-weight:800;
+  font-size:.75rem;letter-spacing:.3em;text-transform:uppercase;
+  color:rgba(255,255,255,.2);
+}
+.footer-copy{
+  font-family:'DM Mono',monospace;font-size:.6rem;
+  letter-spacing:.15em;color:rgba(255,255,255,.2);
+}
+
+/* ═══════════════════════════════════════════
+   PAGE BREAK HELPER (print)
+═══════════════════════════════════════════ */
+@media print{
+  nav,.lang-btn{display:none}
+  body{background:#fff}
+  .project-card,.funding-card,.skill-block{break-inside:avoid}
+  #cover{min-height:auto;page-break-after:always}
+}
+
+/* ═══════════════════════════════════════════
+   RESPONSIVE
+═══════════════════════════════════════════ */
+@media(max-width:768px){
+  .about-grid,.project-grid,.contact-grid{grid-template-columns:1fr}
+  .project-card-wide{grid-column:auto}
+  .cover-stats{gap:1.5rem}
+  nav{padding:0 1.2rem}
+  .section{padding:3.5rem 1.5rem}
+  .cover-content{padding:4rem 1.5rem 2rem}
+}
+
+/* ═══════════════════════════════════════════
+   ENTRANCE ANIMATIONS
+═══════════════════════════════════════════ */
+@keyframes fadeUp{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:translateY(0)}}
+.fade-up{opacity:0;animation:fadeUp .7s ease forwards}
+.delay-1{animation-delay:.1s}
+.delay-2{animation-delay:.25s}
+.delay-3{animation-delay:.4s}
+.delay-4{animation-delay:.55s}
+.delay-5{animation-delay:.7s}
+</style>
+</head>
+<body class="lang-de">
+
+<!-- NAV -->
+<nav>
+  <a class="nav-brand" href="index.html">DRS Universe</a>
+  <div class="nav-links">
+    <a href="index.html">Hub</a>
+    <a href="profil.html">Portfolio</a>
+    <a href="#about"><span class="de">Profil</span><span class="en">Profile</span></a>
+    <a href="#projects"><span class="de">Projekte</span><span class="en">Projects</span></a>
+    <a href="#music"><span class="de">Musik</span><span class="en">Music</span></a>
+    <a href="#cv">CV</a>
+    <a href="#contact"><span class="de">Kontakt</span><span class="en">Contact</span></a>
+    <button class="lang-btn" onclick="toggleLang()">EN / DE</button>
+  </div>
+</nav>
+
+<!-- ═══════════════════════════════════════════
+     COVER
+═══════════════════════════════════════════ -->
+<section id="cover">
+  <div class="cover-grid-lines"></div>
+  <div class="cover-glow"></div>
+  <div class="cover-content">
+    <div class="cover-eyebrow fade-up delay-1">
+      <span class="de">Gesamtportfolio · DRS Universe · Innsbruck · 2026</span>
+      <span class="en">Complete Portfolio · DRS Universe · Innsbruck · 2026</span>
+    </div>
+    <div class="cover-name fade-up delay-2">
+      Daniel<br>Rumpold<br><em>Sanchez</em>
+    </div>
+    <div class="cover-label fade-up delay-3">
+      <span class="de">Musiker · Autor · Filmemacher · Content Creator</span>
+      <span class="en">Musician · Author · Filmmaker · Content Creator</span>
+    </div>
+    <div class="cover-desc fade-up delay-4">
+      <span class="de">
+        Unter dem Dach von <strong>DRS Universe</strong> vereint Daniel Rumpold Sanchez ein unabhängiges Musiklabel mit 17 veröffentlichten Alben, einen Roman in Arbeit, ein Kurzfilmprojekt, E-Learning-Entwicklung und über zwei Jahrzehnte kreative Praxis, entstanden in <strong>Innsbruck, Tirol</strong>.
+      </span>
+      <span class="en">
+        Under the umbrella of <strong>DRS Universe</strong>, Daniel Rumpold Sanchez brings together an independent music label with 17 released albums, a novel in progress, a short film project, e-learning development and over two decades of creative practice, built in <strong>Innsbruck, Tyrol</strong>.
+      </span>
+    </div>
+    <div class="cover-stats fade-up delay-4">
+      <div class="cstat"><div class="cstat-num">17+</div><div class="cstat-label"><span class="de">Alben</span><span class="en">Albums</span></div></div>
+      <div class="cstat"><div class="cstat-num">13+</div><div class="cstat-label"><span class="de">Künstler-Personas</span><span class="en">Artist Personas</span></div></div>
+      <div class="cstat"><div class="cstat-num">20+</div><div class="cstat-label"><span class="de">Jahre Kreativpraxis</span><span class="en">Years Creative Practice</span></div></div>
+      <div class="cstat"><div class="cstat-num">3</div><div class="cstat-label"><span class="de">Sprachen</span><span class="en">Languages</span></div></div>
+    </div>
+    <div class="cover-cta fade-up delay-5">
+      <a href="#projects" class="btn btn-primary">
+        <span class="de">Projekte ansehen</span><span class="en">View Projects</span>
+      </a>
+      <a href="#contact" class="btn btn-outline">
+        <span class="de">Kontakt</span><span class="en">Contact</span>
+      </a>
+    </div>
+  </div>
+  <div class="cover-scroll">
+    <span><span class="de">scroll</span><span class="en">scroll</span></span>
+    <div class="scroll-line"></div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════
+     PROFIL / ABOUT
+═══════════════════════════════════════════ -->
+<section id="about" style="background:var(--ink);padding:5rem 0">
+  <div class="section" style="padding-top:0;padding-bottom:0">
+    <div class="sec-eyebrow">// 01</div>
+    <div class="sec-title sec-title-white">
+      <span class="de">Über den<br><em style="color:var(--green-neon);font-style:normal">Künstler</em></span>
+      <span class="en">About the<br><em style="color:var(--green-neon);font-style:normal">Artist</em></span>
+    </div>
+    <div class="divider"></div>
+    <div class="about-grid">
+      <div>
+        <p class="about-lead">
+          <span class="de">„DRS steht für Doors. Jede Tür öffnet eine andere Welt."</span>
+          <span class="en">"DRS stands for Doors. Every door opens another world."</span>
+        </p>
+        <p class="about-body">
+          <span class="de">
+            Daniel Rumpold Sanchez, geboren 1990 in Jerez de la Frontera, lebt und arbeitet in Innsbruck, Tirol. Er begann früh, autobiografische Texte und Prosa zu verfassen, entwickelte verschiedene Kreativformen autodidaktisch und ist seit 2013 als Filmkritiker auf Moviepilot.de aktiv, über zwölf Jahre Auseinandersetzung mit Narrativen, Genrestrukturen und Filmsprache.
+          </span>
+          <span class="en">
+            Daniel Rumpold Sanchez, born 1990 in Jerez de la Frontera, lives and works in Innsbruck, Tyrol. He began early writing autobiographical texts and prose, developed various creative forms autodidactically and has been active as a film critic on Moviepilot.de since 2013, over twelve years of analytical engagement with narrative structures, genre and film language.
+          </span>
+        </p>
+        <p class="about-body">
+          <span class="de">
+            Als Musiker und Produzent hat er unter dem Label <strong>DRS Records</strong> seit 2023 über 17 Alben vollständig in Eigenproduktion veröffentlicht, mit Komposition, Arrangement, Produktion, Mixing und Mastering ausschließlich in Eigenleistung. Als <strong>MfGen</strong> hat er 2 Alben und 2 EPs veröffentlicht sowie eine dokumentierte Battle-Rap-Karriere mit ca. 40-50 Auftritten bei Dreistil Wien und DLTLLY.
+          </span>
+          <span class="en">
+            As a musician and producer under the <strong>DRS Records</strong> label, he has released over 17 albums entirely self-produced since 2023, with composition, arrangement, production, mixing and mastering exclusively in-house. As <strong>MfGen</strong>, he has released 2 albums and 2 EPs and has a documented battle-rap career with approx. 40-50 live appearances at Dreistil Vienna and DLTLLY.
+          </span>
+        </p>
+        <p class="about-body">
+          <span class="de">
+            Parallel entstehen ein <strong>literarischer Thriller-Roman</strong> ("Eine Geschichte", geplante Trilogie, 500 Seiten), ein <strong>Kurzfilm</strong> ("Die Ausfahrt", Tiroler Mundart-Mockumentary) sowie ein <strong>E-Learning-Modul</strong> ("Paten Power"), das im WIFI-Innsbruck-Auswahlverfahren unter den Top 3 landete.
+          </span>
+          <span class="en">
+            In parallel: a <strong>literary thriller novel</strong> ("Eine Geschichte", planned trilogy, 500 pages), a <strong>short film</strong> ("Die Ausfahrt", Tyrolean dialect mockumentary), and an <strong>e-learning module</strong> ("Paten Power"), which placed in the top 3 of the WIFI Innsbruck selection process.
+          </span>
+        </p>
+      </div>
+      <div class="about-facts">
+        <div class="fact-row">
+          <div class="fact-key"><span class="de">Wohnort</span><span class="en">Location</span></div>
+          <div class="fact-val">Innsbruck, Tirol, Österreich</div>
+        </div>
+        <div class="fact-row">
+          <div class="fact-key"><span class="de">Geburt</span><span class="en">Born</span></div>
+          <div class="fact-val">19. August 1990, Jerez de la Frontera</div>
+        </div>
+        <div class="fact-row">
+          <div class="fact-key"><span class="de">Sprachen</span><span class="en">Languages</span></div>
+          <div class="fact-val">Deutsch (Muttersprache) · Englisch · Spanisch</div>
+        </div>
+        <div class="fact-row">
+          <div class="fact-key"><span class="de">Label</span><span class="en">Label</span></div>
+          <div class="fact-val">DRS Records (Independent) · Innsbruck</div>
+        </div>
+        <div class="fact-row">
+          <div class="fact-key">E-Mail</div>
+          <div class="fact-val">DRS-Records@gmx.net<br><span style="font-size:.78rem;opacity:.6">Daniel-Rumpold-Sanchez@gmx.at</span></div>
+        </div>
+        <div class="fact-row">
+          <div class="fact-key">Web</div>
+          <div class="fact-val" style="word-break:break-all">drs-records-pnx1fl5.gamma.site/drs-records</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════
+     KOMPETENZEN
+═══════════════════════════════════════════ -->
+<section id="skills" class="section">
+  <div class="sec-eyebrow">// 02</div>
+  <div class="sec-title">
+    <span class="de">Kompetenzen &amp; <em>Tools</em></span>
+    <span class="en">Skills &amp; <em>Tools</em></span>
+  </div>
+  <div class="divider"></div>
+  <div class="skills-grid">
+    <div class="skill-block">
+      <div class="skill-ico">🎛️</div>
+      <div class="skill-name"><span class="de">Audioproduktion</span><span class="en">Audio Production</span></div>
+      <div class="skill-tools">
+        <span class="tool-tag">FL Studio</span><span class="tool-tag">Cubase</span><span class="tool-tag">Reaper</span><span class="tool-tag">Wavelab</span><span class="tool-tag">Audacity</span><span class="tool-tag">Mixing</span><span class="tool-tag">Mastering</span><span class="tool-tag">Sounddesign</span>
+      </div>
+    </div>
+    <div class="skill-block">
+      <div class="skill-ico">🎬</div>
+      <div class="skill-name"><span class="de">Video &amp; Schnitt</span><span class="en">Video &amp; Editing</span></div>
+      <div class="skill-tools">
+        <span class="tool-tag">CapCut</span><span class="tool-tag">DaVinci Resolve</span><span class="tool-tag">VSDC</span><span class="tool-tag">OBS</span><span class="tool-tag">Streamlabs</span><span class="tool-tag">Trailer-Produktion</span>
+      </div>
+    </div>
+    <div class="skill-block">
+      <div class="skill-ico">🤖</div>
+      <div class="skill-name"><span class="de">KI-Tools</span><span class="en">AI Tools</span></div>
+      <div class="skill-tools">
+        <span class="tool-tag">Lumalabs</span><span class="tool-tag">Krea</span><span class="tool-tag">Pika</span><span class="tool-tag">DALL-E</span><span class="tool-tag">Flux</span><span class="tool-tag">Invideo</span><span class="tool-tag">HailuoAI</span><span class="tool-tag">PixVerse</span>
+      </div>
+    </div>
+    <div class="skill-block">
+      <div class="skill-ico">✍️</div>
+      <div class="skill-name"><span class="de">Text &amp; Storytelling</span><span class="en">Text &amp; Storytelling</span></div>
+      <div class="skill-tools">
+        <span class="tool-tag">Lyrics</span><span class="tool-tag">Filmkritik</span><span class="tool-tag">Scripts</span><span class="tool-tag">Werbetexte</span><span class="tool-tag">Exposés</span><span class="tool-tag">1.000+ Texte</span>
+      </div>
+    </div>
+    <div class="skill-block">
+      <div class="skill-ico">🎨</div>
+      <div class="skill-name"><span class="de">Grafik &amp; Design</span><span class="en">Graphic &amp; Design</span></div>
+      <div class="skill-tools">
+        <span class="tool-tag">Canva</span><span class="tool-tag">GIMP</span><span class="tool-tag">Animaze</span><span class="tool-tag">Pivot</span><span class="tool-tag">CI-Entwicklung</span><span class="tool-tag">Cover-Artwork</span>
+      </div>
+    </div>
+    <div class="skill-block">
+      <div class="skill-ico">📱</div>
+      <div class="skill-name"><span class="de">Social Media</span><span class="en">Social Media</span></div>
+      <div class="skill-tools">
+        <span class="tool-tag">Instagram</span><span class="tool-tag">TikTok</span><span class="tool-tag">YouTube</span><span class="tool-tag">Twitch</span><span class="tool-tag">Redaktionsplanung</span><span class="tool-tag">Community Mgmt</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════
+     PROJEKTE
+═══════════════════════════════════════════ -->
+<div class="section-full" id="projects">
+  <div class="section">
+    <div class="sec-eyebrow">// 03</div>
+    <div class="sec-title">
+      <span class="de">Aktuelle <em>Projekte</em></span>
+      <span class="en">Current <em>Projects</em></span>
+    </div>
+    <div class="divider"></div>
+    <div class="project-grid">
+
+      <!-- Eine Geschichte -->
+      <div class="project-card">
+        <div class="project-banner"></div>
+        <div class="project-body">
+          <div class="project-type">
+            <span class="de">Roman · Band 1 einer Trilogie</span>
+            <span class="en">Novel · Volume 1 of a Trilogy</span>
+          </div>
+          <div class="project-name">Eine Geschichte</div>
+          <div class="project-desc">
+            <span class="de">
+              Literarischer Thriller / Mystery / Dark Fantasy. Zwei junge Männer, deren Wege unausweichlich aufeinanderzulaufen. Hinter der sichtbaren Welt eine Mythologie aus Schreibern, Fressern und dem Zufall. Ca. 500 Seiten, 61 Kapitel. Aktueller Stand: ~165 Seiten fertiggestellt.
+            </span>
+            <span class="en">
+              Literary Thriller / Mystery / Dark Fantasy. Two young men whose paths inevitably converge. Behind the visible world, a mythology of Writers, Devourers and the Coincidence. Approx. 500 pages, 61 chapters. Current status: ~165 pages completed.
+            </span>
+          </div>
+          <div class="project-meta">
+            <div class="pmeta-item"><strong>Genre</strong>Lit. Thriller / Dark Fantasy</div>
+            <div class="pmeta-item"><strong><span class="de">Stand</span><span class="en">Status</span></strong>~165 / 500 <span class="de">Seiten</span><span class="en">pages</span></div>
+            <div class="pmeta-item"><strong><span class="de">Einreichung</span><span class="en">Submission</span></strong>BKA · Land Tirol</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Die Ausfahrt -->
+      <div class="project-card">
+        <div class="project-banner" style="background:linear-gradient(90deg,#7a5c00,#b8892a80)"></div>
+        <div class="project-body">
+          <div class="project-type">
+            <span class="de">Kurzfilm · Mockumentary · Satire</span>
+            <span class="en">Short Film · Mockumentary · Satire</span>
+          </div>
+          <div class="project-name">Die Ausfahrt</div>
+          <div class="project-desc">
+            <span class="de">
+              Tiroler Mundart-Mockumentary, ca. 45 Minuten. Zwei Männer, eine Autobahn, eine Ausfahrt, die nie wieder kommt. Situationskomödie trifft existenzielle Satire. Low-Budget Independent, Impro-lastig, Regie: Daniel Rumpold Sanchez (DRS Universe).
+            </span>
+            <span class="en">
+              Tyrolean dialect mockumentary, approx. 45 minutes. Two men, one motorway, an exit that never comes again. Situational comedy meets existential satire. Low-budget independent, largely improvised, directed by Daniel Rumpold Sanchez (DRS Universe).
+            </span>
+          </div>
+          <div class="project-meta">
+            <div class="pmeta-item"><strong>Format</strong><span class="de">Kurzfilm / Mini-Feature</span><span class="en">Short / Mini-Feature</span></div>
+            <div class="pmeta-item"><strong><span class="de">Länge</span><span class="en">Length</span></strong>~45 min</div>
+            <div class="pmeta-item"><strong><span class="de">Einreichung</span><span class="en">Submission</span></strong>Cine Tirol · ÖFI</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Shiftworkers -->
+      <div class="project-card">
+        <div class="project-banner green"></div>
+        <div class="project-body">
+          <div class="project-type">
+            <span class="de">Album · Industrial Synthpop</span>
+            <span class="en">Album · Industrial Synthpop</span>
+          </div>
+          <div class="project-name">Shiftworkers — "Uninterrupted"</div>
+          <div class="project-desc">
+            <span class="de">
+              9 Tracks. Gesellschaftskritischer Industrial Synthpop, dystopisch-elektronisch. Fertig produziert, Mastering ausstehend. Geplanter Release Herbst/Winter 2026. Veröffentlichte Singles bereits auf Streaming. ÖMF-Förderantrag Call 62 eingereicht.
+            </span>
+            <span class="en">
+              9 tracks. Social-critical industrial synthpop, dystopian electronic. Fully produced, mastering pending. Planned release Autumn/Winter 2026. Published singles already on streaming. ÖMF funding application Call 62 submitted.
+            </span>
+          </div>
+          <div class="project-meta">
+            <div class="pmeta-item"><strong>Act</strong>Shiftworkers</div>
+            <div class="pmeta-item"><strong>Tracks</strong>9</div>
+            <div class="pmeta-item"><strong><span class="de">Einreichung</span><span class="en">Submission</span></strong>ÖMF Call 62</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Paten Power -->
+      <div class="project-card">
+        <div class="project-banner purple"></div>
+        <div class="project-body">
+          <div class="project-type">E-Learning · Micro-Learning</div>
+          <div class="project-name">Paten Power</div>
+          <div class="project-desc">
+            <span class="de">
+              Interaktives E-Learning-Modul zur Einführung in das Patenmodell. Digitaler Guide "Digidot", Quiz-Interaktionen, vertonte Lernsequenzen. Entwickelt für WIFI Innsbruck Auswahlverfahren Mediengestalter Digitales Learning, unter Top 3 aus über 100 Bewerbern. Zeigt Potenzial für kommerzielle Weiterentwicklung.
+            </span>
+            <span class="en">
+              Interactive e-learning module introducing the mentor model. Digital guide "Digidot", quiz interactions, voiced learning sequences. Developed for WIFI Innsbruck selection process for Media Designer Digital Learning, placed top 3 from over 100 applicants. Shows potential for commercial development.
+            </span>
+          </div>
+          <div class="project-meta">
+            <div class="pmeta-item"><strong>Format</strong>E-Learning Prototype</div>
+            <div class="pmeta-item"><strong>Result</strong>Top 3 / 100+</div>
+            <div class="pmeta-item"><strong>Tool</strong>Canva Interactive</div>
+          </div>
+        </div>
+      </div>
+
+
+      <!-- Theater unter Sternen / Kultursommer -->
+      <div class="project-card">
+        <div class="project-banner" style="background:linear-gradient(90deg,#001a4d,#003399)"></div>
+        <div class="project-body">
+          <div class="project-type">
+            <span class="de">Trailer · Grafikdesign · Eventmaterial</span>
+            <span class="en">Trailer · Graphic Design · Event Material</span>
+          </div>
+          <div class="project-name">Theater unter Sternen 2026</div>
+          <div class="project-desc">
+            <span class="de">
+              Offizielles Programmplakat, Trailer und weitere Werbematerialien für das Open-Air-Festival im Zeughaus Innsbruck (27.06. bis 11.07.2026, Kultursommer / Open Air Kino). Sieben Designversionen entwickelt, digitale Animationen, HTML-Materialien und Videotrailer erstellt. Auftraggeber: Theater unter Sternen / Zeughaus Innsbruck. Förderer: IVB.
+            </span>
+            <span class="en">
+              Official programme poster, trailer and promotional materials for the open-air festival at Zeughaus Innsbruck (27 June to 11 July 2026, Kultursommer / Open Air Cinema). Seven design versions developed, digital animations, HTML materials and video trailer produced. Client: Theater unter Sternen / Zeughaus Innsbruck. Sponsor: IVB.
+            </span>
+          </div>
+          <div class="project-meta">
+            <div class="pmeta-item"><strong><span class="de">Format</span><span class="en">Format</span></strong><span class="de">Trailer, Plakat, HTML, Animation</span><span class="en">Trailer, Poster, HTML, Animation</span></div>
+            <div class="pmeta-item"><strong><span class="de">Tools</span><span class="en">Tools</span></strong>Canva, GIMP, CapCut</div>
+            <div class="pmeta-item"><strong><span class="de">Auftraggeber</span><span class="en">Client</span></strong>Zeughaus Innsbruck</div>
+          </div>
+        </div>
+      </div>
+      <!-- DRS Records Universe (wide) -->
+      <div class="project-card project-card-wide">
+        <div class="project-banner" style="background:linear-gradient(90deg,var(--ink),#333,var(--green-neon))"></div>
+        <div class="project-body" style="display:grid;grid-template-columns:1fr auto;gap:2rem;align-items:start">
+          <div>
+            <div class="project-type">
+              <span class="de">Independent Label · Dachmarke · Seit 2023</span>
+              <span class="en">Independent Label · Umbrella Brand · Since 2023</span>
+            </div>
+            <div class="project-name">DRS Records Universe</div>
+            <div class="project-desc">
+              <span class="de">
+                Eigenständiges Musik-Label aus Innsbruck. 17+ veröffentlichte Alben, 13+ Künstler-Personas, alle vollständig in Eigenproduktion. Genres: Industrial Synthpop, Synthwave, Goa, World Music, Lo-Fi, Darkwave, Deep House, Drum &amp; Bass, Ambient, Rap u.v.m. Distribution über DistroKid, TuneCore, Recordjet auf allen internationalen Streaming-Plattformen. Eigener YouTube-Kanal, Instagram, TikTok. MfGen: 2 Alben, 2 EPs, ca. 40-50 Auftritte (Dreistil Wien, DLTLLY, The Message Magazine), Rapvideo "Mindfuckgeneration".
+              </span>
+              <span class="en">
+                Independent music label from Innsbruck. 17+ released albums, 13+ artist personas, all entirely self-produced. Genres: Industrial Synthpop, Synthwave, Goa, World Music, Lo-Fi, Darkwave, Deep House, Drum &amp; Bass, Ambient, Rap and more. Distribution via DistroKid, TuneCore, Recordjet on all international streaming platforms. Own YouTube channel, Instagram, TikTok. MfGen: 2 albums, 2 EPs, approx. 40-50 live appearances (Dreistil Vienna, DLTLLY, The Message Magazine), music video "Mindfuckgeneration".
+              </span>
+            </div>
+          </div>
+          <div class="project-meta" style="flex-direction:column;gap:.8rem;border:none;padding:0;min-width:160px">
+            <div class="pmeta-item"><strong>17+</strong><span class="de">Alben</span><span class="en">Albums</span></div>
+            <div class="pmeta-item"><strong>13+</strong><span class="de">Artist-Personas</span><span class="en">Artist Personas</span></div>
+            <div class="pmeta-item"><strong>∞</strong><span class="de">Streaming weltweit</span><span class="en">Worldwide Streaming</span></div>
+          </div>
+        </div>
+      </div>
+
+    </div><!-- /project-grid -->
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════
+     MUSIK
+═══════════════════════════════════════════ -->
+<section id="music" style="background:var(--ink);padding:5rem 0">
+  <div class="section" style="padding-top:0;padding-bottom:0">
+    <div class="sec-eyebrow">// 04</div>
+    <div class="sec-title sec-title-white">
+      <span class="de">DRS Records <em style="color:var(--green-neon);font-style:normal">Universe</em></span>
+      <span class="en">DRS Records <em style="color:var(--green-neon);font-style:normal">Universe</em></span>
+    </div>
+    <div class="divider"></div>
+    <p style="color:rgba(255,255,255,.4);font-size:.9rem;line-height:1.8;max-width:600px;margin-bottom:2rem">
+      <span class="de">Alle Künstler-Personas sind eine kreative Intelligenz in verschiedenen klanglichen Dimensionen.</span>
+      <span class="en">All artist personas are one creative intelligence expressed across different sonic dimensions.</span>
+    </p>
+    <div class="artists-grid">
+      <div class="artist-block"><div class="artist-block-name">WaVRazoR</div><div class="artist-block-genre">Electro Synthwave · Cyberpunk</div></div>
+      <div class="artist-block"><div class="artist-block-name">Shiftworkers</div><div class="artist-block-genre">Industrial Synthpop · Dystopian</div></div>
+      <div class="artist-block"><div class="artist-block-name">Confuzed Potoo</div><div class="artist-block-genre">Goa · Psychedelic Techno</div></div>
+      <div class="artist-block"><div class="artist-block-name">Janjati</div><div class="artist-block-genre">World Music · Global Fusion</div></div>
+      <div class="artist-block"><div class="artist-block-name">Trace of Syberia</div><div class="artist-block-genre">Lo-Fi Hip-Hop · Atmospheric</div></div>
+      <div class="artist-block"><div class="artist-block-name">Vampires at the Beach</div><div class="artist-block-genre">Dark Wave · Electro Retro</div></div>
+      <div class="artist-block"><div class="artist-block-name">Marquez Sans</div><div class="artist-block-genre">Deep House · Coastal</div></div>
+      <div class="artist-block"><div class="artist-block-name">String on a Stick</div><div class="artist-block-genre">Drum &amp; Bass · Cinematic</div></div>
+      <div class="artist-block"><div class="artist-block-name">Chetana</div><div class="artist-block-genre">Yoga Chillout · Ambient</div></div>
+      <div class="artist-block"><div class="artist-block-name">Ctulhus Scream</div><div class="artist-block-genre">Industrial · Dark</div></div>
+      <div class="artist-block"><div class="artist-block-name">Glassframe</div><div class="artist-block-genre">Electronic · Atmospheric · "Intermediate World"</div></div>
+      <div class="artist-block"><div class="artist-block-name">SamPlecity</div><div class="artist-block-genre">Trance · Melodic · "Sound of Colour"</div></div>
+      <div class="artist-block"><div class="artist-block-name">Digidino</div><div class="artist-block-genre">Retro Electro · Synthwave · "Big Bang"</div></div>
+      <div class="artist-block" style="border-left:2px solid rgba(57,255,20,.3)"><div class="artist-block-name" style="color:var(--green-neon)">D00RS</div><div class="artist-block-genre">Pop · Melancholisch · Techno · Hauptprojekt</div></div>
+      <div class="artist-block"><div class="artist-block-name">MfGen</div><div class="artist-block-genre">Hip-Hop · Battle-Rap · 2 Alben · 2 EPs</div></div>
+    </div>
+
+    <table class="releases-table" style="margin-top:3rem">
+      <thead>
+        <tr>
+          <th>Artist</th>
+          <th><span class="de">Titel</span><span class="en">Title</span></th>
+          <th>Format</th>
+          <th><span class="de">Veröffentlicht</span><span class="en">Released</span></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td>WaVRazoR</td><td>Space Waves</td><td>Album · 7 Tracks</td><td>25.02.2025</td></tr>
+        <tr><td>Janjati</td><td>Thoridonal Sphere</td><td>EP · 6 Tracks</td><td>07.03.2025</td></tr>
+        <tr><td>String on a Stick</td><td>Pieces of a Parallel Universe</td><td>Album · 7 Tracks</td><td>08.03.2025</td></tr>
+        <tr><td>Confuzed Potoo</td><td>Galactic Safari</td><td>Album · 8 Tracks</td><td>10.03.2025</td></tr>
+        <tr><td>Chetana</td><td>Sunreflection</td><td>Album · 5 Tracks</td><td>11.03.2025</td></tr>
+        <tr><td>Trace of Syberia</td><td>Footprints in the Snow</td><td>EP · 5 Tracks</td><td>12.03.2025</td></tr>
+        <tr><td>Marquez Sans</td><td>Inside</td><td>Album · 6 Tracks</td><td>13.03.2025</td></tr>
+        <tr><td>MfGen</td><td>Abra Kadabra / Battlerapshit</td><td>Singles</td><td>2015</td></tr>
+        <tr><td>MfGen</td><td>Meister der Talente</td><td><span class="de">Debütalbum (nicht mehr verfügbar)</span><span class="en">Debut Album (no longer available)</span></td><td>2015</td></tr>
+        <tr><td>MfGen</td><td>Secret Galaxy</td><td>Album</td><td>20.11.2020</td></tr>
+        <tr><td>MfGen</td><td>Nocturnal</td><td>Album</td><td>07.07.2021</td></tr>
+        <tr><td>MfGen</td><td>Seed</td><td>EP</td><td>19.08.2021</td></tr>
+        <tr><td>MfGen</td><td>Omen</td><td>EP · DRS Records</td><td><span class="de">Oktober 2025</span><span class="en">October 2025</span></td></tr>
+        <tr><td>Glassframe</td><td>Intermediate World</td><td>Album · 7 Tracks</td><td style="color:rgba(57,255,20,.5)"><span class="de">Winter 2026</span><span class="en">Winter 2026</span></td></tr>
+        <tr><td>Ctulhus Scream</td><td>Depths of the Underworld</td><td>Album · 9 Tracks</td><td style="color:rgba(57,255,20,.5)"><span class="de">Frühjahr 2027</span><span class="en">Spring 2027</span></td></tr>
+        <tr><td>Digidino</td><td>Big Bang</td><td>Album · 6 Tracks</td><td style="color:rgba(57,255,20,.5)"><span class="de">Frühjahr 2027</span><span class="en">Spring 2027</span></td></tr>
+        <tr><td>SamPlecity</td><td>Sound of Colour</td><td>Album · 7 Tracks</td><td style="color:rgba(57,255,20,.5)"><span class="de">Frühjahr 2027</span><span class="en">Spring 2027</span></td></tr>
+        <tr><td>Shiftworkers</td><td>Uninterrupted</td><td>Album · 9 Tracks</td><td style="color:rgba(57,255,20,.5)">April 2027</td></tr>
+        <tr><td>MfGen</td><td><span class="de">Single (vor Album)</span><span class="en">Single (pre-album)</span></td><td>Single</td><td style="color:rgba(57,255,20,.5)">2027</td></tr>
+        <tr><td>D00RS</td><td><span class="de">Debütsingle</span><span class="en">Debut Single</span></td><td>Single</td><td style="color:rgba(57,255,20,.5)">2027</td></tr>
+        <tr><td>MfGen</td><td>Die Hoffnung stirbt zuletzt</td><td><span class="de">Album (geplant)</span><span class="en">Album (planned)</span></td><td style="color:rgba(57,255,20,.5)">2027</td></tr>
+        <tr><td>D00RS</td><td>Nullpunkt</td><td><span class="de">Debütalbum (geplant) — Highlight</span><span class="en">Debut Album (planned) — Highlight</span></td><td style="color:rgba(57,255,20,.8);font-weight:700">2027</td></tr>
+      </tbody>
+    </table>
+
+    <p style="font-family:'DM Mono',monospace;font-size:.6rem;letter-spacing:.15em;color:rgba(255,255,255,.2);margin-top:1rem;text-align:right">
+      <span class="de">Frühjahr 2027: Übergangsphase ohne große Promo · Glassframe/Ctulhus/Digidino/SamPlecity · dann Shiftworkers April 2027 · danach MfGen Single · dann D00RS Single · dann die Alben: MfGen zuerst, D00RS als Highlight</span>
+      <span class="en">Spring 2027: transition phase without major promo · Glassframe/Ctulhus/Digidino/SamPlecity · then Shiftworkers April 2027 · then MfGen single · then D00RS single · then albums: MfGen first, D00RS as the highlight</span>
+    </p>
+    <div class="vision-block" style="margin-top:3rem">
+      <div class="vision-quote">
+        <span class="de">„Was nach außen wie viele verschiedene Künstler aussieht, ist in Wahrheit eine einzige kreative Intelligenz, die sich in so vielen Genres ausdrückt, wie es Türen gibt. Das ist kein Konzept. Das bin ich."</span>
+        <span class="en">"What looks from the outside like many different artists is in truth a single creative intelligence expressing itself in as many genres as there are doors. This is not a concept. This is me."</span>
+      </div>
+      <div class="vision-attr">— Daniel Rumpold Sanchez · DRS Universe · Innsbruck 2026</div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════
+     LEBENSLAUF / CV
+═══════════════════════════════════════════ -->
+<div class="section-full" id="cv">
+  <div class="section">
+    <div class="sec-eyebrow">// 06</div>
+    <div class="sec-title">
+      <span class="de">Lebenslauf &amp; <em>Ausbildung</em></span>
+      <span class="en">CV &amp; <em>Education</em></span>
+    </div>
+    <div class="divider"></div>
+
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:4rem">
+      <div>
+        <h3 style="font-family:'Syne',sans-serif;font-size:.75rem;font-weight:800;letter-spacing:.2em;text-transform:uppercase;color:var(--muted);margin-bottom:1.5rem">
+          <span class="de">Kreative Praxis</span><span class="en">Creative Practice</span>
+        </h3>
+        <div class="timeline">
+          <div class="tl-entry">
+            <div class="tl-dates">2023–<span class="de">laufend</span><span class="en">ongoing</span></div>
+            <div>
+              <div class="tl-title">DRS Records Universe</div>
+              <div class="tl-org"><span class="de">Gründer, Produzent, Label-Manager · Innsbruck</span><span class="en">Founder, Producer, Label Manager · Innsbruck</span></div>
+              <div class="tl-desc"><span class="de">17+ Alben, 13+ Künstler-Personas, vollständige Eigenproduktion</span><span class="en">17+ albums, 13+ artist personas, fully self-produced</span></div>
+            </div>
+          </div>
+          <div class="tl-entry">
+            <div class="tl-dates">2013–<span class="de">laufend</span><span class="en">ongoing</span></div>
+            <div>
+              <div class="tl-title">Filmkritiker &amp; Listenkurator</div>
+              <div class="tl-org">Moviepilot.de (als Dementias)</div>
+              <div class="tl-desc"><span class="de">12+ Jahre, 2.800+ Filme, 136 Follower, kuratierte Listen</span><span class="en">12+ years, 2,800+ films, 136 followers, curated lists</span></div>
+            </div>
+          </div>
+          <div class="tl-entry">
+            <div class="tl-dates">2015–<span class="de">laufend</span><span class="en">ongoing</span></div>
+            <div>
+              <div class="tl-title"><span class="de">Romanprojekt "Eine Geschichte"</span><span class="en">Novel "Eine Geschichte"</span></div>
+              <div class="tl-org">DRS Universe · <span class="de">Wiederaufnahme</span><span class="en">Resumed</span> 2025/26</div>
+              <div class="tl-desc"><span class="de">Literarischer Thriller-Trilogie. ~165 Seiten, 61 Kapitel vollständig konzipiert</span><span class="en">Literary thriller trilogy. ~165 pages, all 61 chapters fully outlined</span></div>
+            </div>
+          </div>
+          <div class="tl-entry">
+            <div class="tl-dates">2015–2016</div>
+            <div>
+              <div class="tl-title">MfGen</div>
+              <div class="tl-org">DRS Records · Battle-Rap Persona</div>
+              <div class="tl-desc"><span class="de">2 Alben (Secret Galaxy, Nocturnal), 2 EPs (Seed, Omen), Singles seit 2015. Ca. 40-50 Auftritte, Dreistil Wien, DLTLLY, The Message Magazine. Rapvideo "Mindfuckgeneration". Neues Album "Die Hoffnung stirbt zuletzt" geplant 2027.</span><span class="en">2 albums (Secret Galaxy, Nocturnal), 2 EPs (Seed, Omen), singles since 2015. Approx. 40-50 live appearances, Dreistil Vienna, DLTLLY, The Message Magazine. Music video "Mindfuckgeneration". New album "Die Hoffnung stirbt zuletzt" planned 2027.</span></div>
+            </div>
+          </div>
+          <div class="tl-entry">
+            <div class="tl-dates">2026</div>
+            <div>
+              <div class="tl-title"><span class="de">Theater unter Sternen</span><span class="en">Theater unter Sternen</span></div>
+              <div class="tl-org"><span class="de">Trailer, Plakat, Eventmaterial</span><span class="en">Trailer, Poster, Event Material</span></div>
+              <div class="tl-desc"><span class="de">7 Designversionen, HTML-Animationen, Videotrailer für Open-Air-Festival im Zeughaus Innsbruck</span><span class="en">7 design versions, HTML animations, video trailer for open-air festival at Zeughaus Innsbruck</span></div>
+            </div>
+          </div>
+          <div class="tl-entry">
+            <div class="tl-dates">2024–2025</div>
+            <div>
+              <div class="tl-title">Paten Power E-Learning</div>
+              <div class="tl-org">WIFI Innsbruck <span class="de">Auswahlverfahren</span><span class="en">Selection Process</span></div>
+              <div class="tl-desc"><span class="de">Top 3 von 100+ Bewerbungen</span><span class="en">Top 3 of 100+ applicants</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div>
+        <h3 style="font-family:'Syne',sans-serif;font-size:.75rem;font-weight:800;letter-spacing:.2em;text-transform:uppercase;color:var(--muted);margin-bottom:1.5rem">
+          <span class="de">Ausbildung</span><span class="en">Education</span>
+        </h3>
+        <div class="timeline">
+          <div class="tl-entry">
+            <div class="tl-dates">2025</div>
+            <div>
+              <div class="tl-title"><span class="de">Berufsreifeprüfung</span><span class="en">University Entrance Exam</span></div>
+              <div class="tl-org">WIFI Innsbruck</div>
+              <div class="tl-desc">Touristisches Management</div>
+            </div>
+          </div>
+          <div class="tl-entry">
+            <div class="tl-dates">2017–2018</div>
+            <div>
+              <div class="tl-title"><span class="de">Berufsreifeprüfung</span><span class="en">University Entrance Exam</span></div>
+              <div class="tl-org">WIFI Innsbruck</div>
+              <div class="tl-desc">Mathematik · Deutsch · Englisch</div>
+            </div>
+          </div>
+          <div class="tl-entry">
+            <div class="tl-dates">2009–2011</div>
+            <div>
+              <div class="tl-title"><span class="de">Lehrabschluss Restaurantfachmann</span><span class="en">Apprenticeship — Restaurant Manager</span></div>
+              <div class="tl-org">WIFI Innsbruck</div>
+            </div>
+          </div>
+        </div>
+
+        <h3 style="font-family:'Syne',sans-serif;font-size:.75rem;font-weight:800;letter-spacing:.2em;text-transform:uppercase;color:var(--muted);margin:2rem 0 1.2rem">
+          <span class="de">Zertifikate 2025/26</span><span class="en">Certificates 2025/26</span>
+        </h3>
+        <div class="certs-grid" style="grid-template-columns:1fr">
+          <div class="cert-card">
+            <div class="cert-name">Content-Marketing</div>
+            <div class="cert-org">HubSpot Academy</div>
+            <div class="cert-date">Mai 2026</div>
+          </div>
+          <div class="cert-card">
+            <div class="cert-name">SEO Certified</div>
+            <div class="cert-org">HubSpot Academy</div>
+            <div class="cert-date">Mai 2026</div>
+          </div>
+          <div class="cert-card">
+            <div class="cert-name">AI for Writing &amp; Communicating</div>
+            <div class="cert-org">Google</div>
+            <div class="cert-date">Mai 2026 · ID: 050V4JDR3MGY</div>
+          </div>
+          <div class="cert-card">
+            <div class="cert-name">OCG Typing Certificate Professional</div>
+            <div class="cert-org">Österreichische Computer Gesellschaft (OCG)</div>
+            <div class="cert-date">Juni 2025 · 2080 Zeichen · 0,24% Fehlerrate</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════
+     KONTAKT
+═══════════════════════════════════════════ -->
+<section id="contact" style="background:var(--ink);padding:5rem 0">
+  <div class="section" style="padding-top:0;padding-bottom:0">
+    <div class="sec-eyebrow">// 07</div>
+    <div class="sec-title sec-title-white">
+      <span class="de">Kontakt &amp; <em style="color:var(--green-neon);font-style:normal">Links</em></span>
+      <span class="en">Contact &amp; <em style="color:var(--green-neon);font-style:normal">Links</em></span>
+    </div>
+    <div class="divider"></div>
+    <div class="contact-grid">
+      <div class="contact-item">
+        <div class="contact-ico">✉</div>
+        <div>
+          <div class="contact-key">E-Mail (<span class="de">Allgemein</span><span class="en">General</span>)</div>
+          <div class="contact-val">Daniel-Rumpold-Sanchez@gmx.at</div>
+        </div>
+      </div>
+      <div class="contact-item">
+        <div class="contact-ico">✉</div>
+        <div>
+          <div class="contact-key">E-Mail (<span class="de">Label / Musik</span><span class="en">Label / Music</span>)</div>
+          <div class="contact-val">DRS-Records@gmx.net</div>
+        </div>
+      </div>
+      <div class="contact-item">
+        <div class="contact-ico">📞</div>
+        <div>
+          <div class="contact-key">Telefon</div>
+          <div class="contact-val">+43 676 / 927 7135</div>
+        </div>
+      </div>
+      <div class="contact-item">
+        <div class="contact-ico">📍</div>
+        <div>
+          <div class="contact-key"><span class="de">Adresse</span><span class="en">Address</span></div>
+          <div class="contact-val">Hallerstraße 77, 6020 Innsbruck<br><span style="opacity:.4;font-size:.78rem">Tirol, Österreich</span></div>
+        </div>
+      </div>
+      <div class="contact-item">
+        <div class="contact-ico">🌐</div>
+        <div>
+          <div class="contact-key">Web / Portfolio</div>
+          <div class="contact-val" style="word-break:break-all">drs-records-pnx1fl5.gamma.site/drs-records</div>
+        </div>
+      </div>
+      <div class="contact-item">
+        <div class="contact-ico">▶</div>
+        <div>
+          <div class="contact-key">YouTube</div>
+          <div class="contact-val">@DRS-Universe-Records</div>
+        </div>
+      </div>
+      <div class="contact-item">
+        <div class="contact-ico">📸</div>
+        <div>
+          <div class="contact-key">Instagram</div>
+          <div class="contact-val">@drs.universe.records · @mindfuckgeneration</div>
+        </div>
+      </div>
+      <div class="contact-item">
+        <div class="contact-ico">🎵</div>
+        <div>
+          <div class="contact-key">Spotify (Hauptact)</div>
+          <div class="contact-val" style="word-break:break-all;font-size:.75rem">open.spotify.com/artist/63D3TL5OIASMKmtC1Bzanw</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-brand">DRS Universe · <span class="de">Gesamtportfolio</span><span class="en">Complete Portfolio</span> 2026</div>
+  <div class="footer-copy">© 2026 Daniel Rumpold Sanchez · Innsbruck, Tirol · drs-records-pnx1fl5.gamma.site</div>
+</footer>
+
+<script>
+// Language toggle
+function toggleLang(){
+  const body=document.body;
+  if(body.classList.contains('lang-de')){
+    body.classList.replace('lang-de','lang-en');
+    document.documentElement.lang='en';
+  } else {
+    body.classList.replace('lang-en','lang-de');
+    document.documentElement.lang='de';
+  }
+}
+
+// Smooth scroll
+document.querySelectorAll('a[href^="#"]').forEach(a=>{
+  a.addEventListener('click',e=>{
+    e.preventDefault();
+    const t=document.querySelector(a.getAttribute('href'));
+    if(t)t.scrollIntoView({behavior:'smooth'});
+  });
+});
+
+// Intersection observer for fade-up
+const obs=new IntersectionObserver((entries)=>{
+  entries.forEach(e=>{
+    if(e.isIntersecting){
+      e.target.style.opacity='1';
+      e.target.style.transform='translateY(0)';
+    }
+  });
+},{threshold:.1});
+document.querySelectorAll('.project-card,.skill-block,.fact-row,.cert-card').forEach(el=>{
+  el.style.opacity='0';
+  el.style.transform='translateY(16px)';
+  el.style.transition='opacity .5s ease,transform .5s ease';
+  obs.observe(el);
+});
+</script>
+</body>
+</html>
